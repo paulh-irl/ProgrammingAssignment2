@@ -1,27 +1,27 @@
+
 ## Put comments here that give an overall description of what your
 ## functions do
-
 ## This function creates a special "matrix" object that can cache its inverse. 
 ## Note that instructions in assignment state "For this assignment, assume that the matrix supplied is always invertible." 
 ## So - the function does not contain any validation of this assumption.
 
 makeCacheMatrix <- function(x = matrix()) {
 
-	## The function makeCacheMatrix creates a special "vector", which is really a list containing a function to
-	## * set the value of the vector
-	## * get the value of the vector
-	## * set the value of the mean
-	## * get the value of the mean
+	## The function makeCacheMatrix creates a special matrix, which is really a list containing a function to
+	## * set the value of the matrix
+	## * get the value of the matrix
+	## * set the value of the Inverse of the matrix
+ 	## * get the value of the Inverse of the matrix
 
 	Inv <- NULL; ## Initialise
 	Set <- function(y)
 	{
-		x << y
-		Inv << NULL
+		x <<- y
+		Inv <<- NULL
 	}
 	Get <- function() x
 	
-	SetInv <- function(solve) Inv <- solve
+	SetInv <- function(solve) Inv <<- solve
 
 	GetInv <- function() Inv
 	
@@ -48,7 +48,14 @@ cacheSolve <- function(x, ...) {
 }
 
 ## Testing steps to follow on next line..
+## 1) Generate a square Matrix:
+# testMatrix <- matrix(data = rexp(200, rate = 10), nrow = 10, ncol = 10)
 
-## - Run once and observe that it returns the inverse of the matrix.
-## - Run once more and observe the same result, but this time there should also be a message stating that the result is being read from the Cache
+## 2) Generate CacheMatrix object:
+# cs <- makeCacheMatrix(testMatrix)
+
+## - Run the following:
+# cacheSolve(cs)
+
+## - Run "cacheSolve(cs)" and observe the same result, but this time there should also be a message stating that the result is being read from the Cache
 
